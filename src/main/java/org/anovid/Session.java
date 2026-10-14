@@ -33,4 +33,24 @@ public boolean isFull() {
     return capacity == bookedSeats;
 }
 
+public void bookSeats(int seats){
+        if(seats<=0){
+            throw new IllegalArgumentException("Seats must be greater than zero.");
+        }
+        if(seats>getAvailableSeats()){
+            throw new IllegalStateException("Not enough seats available");
+        }
+       bookedSeats += seats;
+
+}
+public void cancelSeats(int seats){
+        if(seats<=0){
+            throw new IllegalArgumentException("Seats must be greater than zero.");
+        }
+    if (seats > bookedSeats) {
+        throw new IllegalStateException("Cannot cancel more seats than are booked.");
+    }
+        bookedSeats -= seats;
+}
+
 }

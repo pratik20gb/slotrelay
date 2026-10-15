@@ -52,5 +52,8 @@ public void cancelSeats(int seats){
     }
         bookedSeats -= seats;
 }
+public String toString(){
+        return "Session{name=' "+id + "', title='"+title+"', capacity="+capacity+"}";
+}
 
 }

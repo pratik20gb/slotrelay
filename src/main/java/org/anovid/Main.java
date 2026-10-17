@@ -1,29 +1,20 @@
 package org.anovid;
+
+import java.util.List;
+
 public class Main {
     static void main() {
 
         SessionService service = new SessionService();
 
-        service.addSession(new Session(1, "Java Mock Interview", 2));
-        service.addSession(new Session(2, "Spring Boot Practice", 3));
+        service.addSession(new Session(1,"spring boot",2));
+        service.addSession(new Session(3,"java",2));
 
-        try{
-            service.bookSeats(1L,1);
-            System.out.println("Seats booked successfully");
-        }catch(IllegalStateException | IllegalArgumentException e){
-            System.out.println("Booking failed: " + e.getMessage());
+        service.bookSeats(3,3);
+        service.cancelSeats(3,3);
+        for(Session session:service.getAvailableSessions()) {
+            System.out.println(session.getTitle());
         }
-
-        try{
-            service.cancelSeats(1L,2);
-            System.out.println("Seats cancelled successfully");
-        }catch(IllegalArgumentException | IllegalStateException e){
-            System.out.println("Cancellation failed: " + e.getMessage());
-        }
-
-
-        System.out.println("Program continues");
-        System.out.println(service.getSessionById(1L).getBookedSeats());
     }
 
 }

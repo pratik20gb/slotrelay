@@ -1,6 +1,8 @@
 package org.anovid;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class SessionService {
@@ -32,6 +34,20 @@ public class SessionService {
         }
 
         return found;
+    }
+
+    public List<Session> getAllSessions() {
+        return new ArrayList<>(sessions.values());
+    }
+
+    public List<Session>getAvailableSessions(){
+        List<Session> availableSessions = new ArrayList<>();
+        for(Session session : sessions.values()) {
+            if(!session.isFull()){
+                availableSessions.add(session);
+            }
+        }
+        return availableSessions;
     }
 
 }
